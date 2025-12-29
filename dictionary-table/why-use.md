@@ -1,5 +1,6 @@
 <blockquote>
 我今天其中一個系統的資料架構如下
+
 ```
 foo_file	客戶主檔	foo01	客戶編號	
 foo_file	客戶主檔	foo02	客戶簡稱	
@@ -7,7 +8,9 @@ foo_file	客戶主檔	foo03	客戶分類
 ```
 
 要交給 AI 辨識，轉換資料欄位名稱比較好，還是使用 dictionary table ？
+
 </blockquote>
+
 結論先講：**兩個都要，但主力放在 dictionary table（資料字典/對照表）**；欄位名稱要不要改，取決於你「只做一次」還是「要長期維運、可追溯、可擴充」。
 
 ---
@@ -123,4 +126,5 @@ AI 真正需要的是：
 * `foo241~foo245 -> shipping_address_line1~line5`
 * `foo261~foo263 -> phone1~phone3`
 * `foo1004 -> status_code`
+
   …並把 `foo* / fooa*` 分類好，讓你 dictionary table 可以直接匯入。
