@@ -1,0 +1,30 @@
+name: Build book to html files
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - run: mdbook build
+      
+      - name: deploy
+        uses: actions/upload-artifact@v4
+        with: 
+          name: "{{ Lorem ipsum dolor }}文件.zip"
+          path: book
+          retention-days: 30
+          
